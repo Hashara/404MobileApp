@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "670730345942",
+    "firebase_url": "https://wieproject-7703d.firebaseio.com",
+    "project_id": "wieproject-7703d",
+    "storage_bucket": "wieproject-7703d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670730345942:android:36c4d795671c7170",
+        "android_client_info": {
+          "package_name": "com.example.smart_edkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670730345942-s9o8cd1ib39je8md8tr1p81o4a2tr0p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSj92U0EY3OJ0F6aeDXsGfyCwB3wGJU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670730345942-s9o8cd1ib39je8md8tr1p81o4a2tr0p1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
