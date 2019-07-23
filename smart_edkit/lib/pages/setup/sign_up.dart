@@ -67,6 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
               ),
             ),
+            
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: RaisedButton(
