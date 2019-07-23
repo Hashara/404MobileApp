@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_edkit/pages/home.dart';
+import 'package:smart_edkit/pages/teacher/teacherhome.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(),
+     // appBar: new AppBar(),
       body: Form(
         key: _formKey,
         child: Column(
@@ -44,7 +44,9 @@ class _LoginPageState extends State<LoginPage> {
             //   onSaved: (input) => _password = input,
             //   obscureText: true,
             // ),
-            SizedBox(height: 48.0),
+            SizedBox(height: 250.0),
+            
+             SizedBox(width: 100.0),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
               autofocus: false,
@@ -115,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
       try{
         FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
         //  String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Home(user: user)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherHomePage(user: user)));
       }catch(e){
         print(e.message);
       }
