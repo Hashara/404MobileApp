@@ -11,8 +11,7 @@ class AdminPage extends StatefulWidget {
 class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Container( 
     );
   }
 }

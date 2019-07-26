@@ -1,5 +1,5 @@
-import 'package:smart_edkit/pages/setup/sign_in.dart';
-import 'package:smart_edkit/pages/setup/sign_up.dart';
+import 'package:sedkit/pages/setup/sign_in.dart';
+import 'package:sedkit/pages/setup/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {

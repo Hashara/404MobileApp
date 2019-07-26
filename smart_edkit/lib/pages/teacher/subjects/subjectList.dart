@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class StudentsPage extends StatefulWidget {
-  const StudentsPage({Key key, this.user}) : super(key: key);
+
+class SubjectListPage extends StatefulWidget {
+  const SubjectListPage({Key key, this.user}) : super(key: key);
   final String user;
   @override
-  _StudentsPageState createState() => _StudentsPageState();
+  _SubjectListPageState createState() => _SubjectListPageState();
 }
 
-class _StudentsPageState extends State<StudentsPage> {
-   String user;
+class _SubjectListPageState extends State<SubjectListPage> {
+  String user;
  
   @override
   void initState() {
@@ -21,7 +22,7 @@ class _StudentsPageState extends State<StudentsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Students'),
+        title: Text('Notes'),
       ),
   
      
@@ -35,14 +36,14 @@ class _StudentsPageState extends State<StudentsPage> {
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
-           return Text('${snapshot.data['students']} ');
-            //  for(var i = 0;i<snapshot.data['students'].length;i++){
-            //     print("Position $i : ${snapshot.data['students'][i]} ");
-            //   }
+            return Text('${snapshot.data['subjects']} ');
           }
           return LinearProgressIndicator();
         },
       ),
+  
     );
   }
+  
+
 }

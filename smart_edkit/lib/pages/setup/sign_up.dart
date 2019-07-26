@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_edkit/pages/setup/sign_in.dart';
+import 'package:sedkit/pages/setup/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
+//import 'package:firebase_database/firebase_database.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -17,76 +17,107 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 48.0),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              autofocus: false,
-               onSaved: (input) => _email = input,
-               validator: (input) {
-                if(input.isEmpty){
-                  return 'Provide an email';
-                }
-              },
-              decoration: InputDecoration(
-                prefixIcon: Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Icon(
-                    Icons.email,
-                    color: Colors.grey,
-                  ), // icon is 48px widget.
-                ), // icon is 48px widget.
-                hintText: 'Email',
-                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-              ),
-            ),
-             SizedBox(height: 20.0),
-            TextFormField(
-              autofocus: false,
-              obscureText: true,
-               onSaved: (input) => _password = input,
-              validator: (input) {
-                  if(input.length < 6){
-                    return 'Longer password please';
-                  }
-                },
-              decoration: InputDecoration(
-                prefixIcon: Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Icon(
-                    Icons.lock,
-                    color: Colors.grey,
-                  ), // icon is 48px widget.
-                ), // icon is 48px widget.
-                hintText: 'Password',
-                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-              ),
-            ),
-            
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                onPressed:signUp,
-                padding: EdgeInsets.all(12),
-                color: Theme.of(context).primaryColor,
-                child: Text('SIGN UP', style: TextStyle(color: Colors.white)),
-              ),
-            ),
-            
-          ],
-        )
-      ),
+      body: Center(
+        child:loginBody(),
+     
+       )
     );
   }
 
+ loginBody() => SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[loginHeader(), loginFields()],
+        ),
+      );
+
+  loginHeader() => Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        FlutterLogo(
+          colors: Colors.blue,
+          size: 80.0,
+        ),
+        SizedBox(
+          height: 30.0,
+        ),
+        Text(
+          "Welcome to Smart Edkit",
+          style: TextStyle(fontWeight: FontWeight.w700, color: Colors.blue),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          "Sign up to continue",
+          style: TextStyle(color: Colors.grey),
+        ),
+      ],
+    );
+  loginFields() => Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
+              child: TextFormField(
+                maxLines: 1,
+                keyboardType: TextInputType.emailAddress,
+                onSaved: (input) => _email = input,
+                validator: (input) {
+                  if(input.isEmpty){
+                    return 'Provide an email';
+                  }
+                },
+                decoration: InputDecoration(
+                  hintText: "Enter your email",
+                  labelText: "Email",
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
+              child: TextFormField(
+                maxLines: 1,
+                onSaved: (input) => _password = input,
+                validator: (input) {
+                    if(input.length < 6){
+                      return 'Longer password please';
+                    }
+                },
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: "Enter your password",
+                  labelText: "Password",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
+              width: double.infinity,
+              child: RaisedButton(
+                padding: EdgeInsets.all(12.0),
+                shape: StadiumBorder(),
+                child: Text(
+                  "SIGN UP",
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.blue,
+                 onPressed:signUp,
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            
+          ],
+        ),
+      );
   void signUp() async {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();

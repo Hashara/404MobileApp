@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_edkit/pages/teacher/calender/clean_calander.dart';
+import 'package:sedkit/pages/teacher/calender/clean_calander.dart';
 
 class AttendancePage extends StatefulWidget {
   const AttendancePage({Key key, this.user}) : super(key: key);

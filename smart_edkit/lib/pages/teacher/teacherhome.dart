@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/rendering.dart';
-import 'package:smart_edkit/pages/teacher/notes.dart';
-import 'package:smart_edkit/pages/teacher/admin.dart';
-import 'package:smart_edkit/pages/teacher/attendance.dart';
-import 'package:smart_edkit/pages/teacher/map.dart';
-import 'package:smart_edkit/pages/teacher/students.dart';
-import 'package:smart_edkit/pages/teacher/timetable.dart';
-//import 'package:smart_edkit/pages/teacher/calender/clean_calander.dart';
+import 'package:sedkit/pages/teacher/admin.dart';
+import 'package:sedkit/pages/teacher/attendance.dart';
+import 'package:sedkit/pages/teacher/map.dart';
+import 'package:sedkit/pages/teacher/students.dart';
+import 'package:sedkit/pages/teacher/timetable.dart';
+import 'package:sedkit/pages/teacher/notes/screens/note_list.dart';
+
 class TeacherHomePage extends StatefulWidget {
   const TeacherHomePage({Key key, this.user}) : super(key: key);
   final FirebaseUser user;
@@ -41,17 +41,19 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
       appBar: AppBar(
         title: Text('Home ${user.uid}'),
       ),
+      //backgroundColor: Colors.blueAccent,
       body:Column(
-        
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          SizedBox(height: 40.0),
+          SizedBox(height: 50.0),
           Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-            
+            mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment:CrossAxisAlignment.stretch ,
             children: <Widget>[
             
               Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment:CrossAxisAlignment.stretch ,
                  children: <Widget>[
                   Container(
                     height: admin.height,
@@ -66,11 +68,6 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                       ),
                      ),
                   ),
-                  Text('My Attendance',style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0
-                    )
-                  )
                 ],
               ),
               Column(
@@ -88,13 +85,9 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                       ),
                      ),
                   ),
-                  Text('Time Table',style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0
-                    )
-                  )
                 ],
-              )
+              ),
+              
             ],
           ),
            Row(
@@ -116,11 +109,6 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                       ),
                      ),
                   ),
-                  Text('Notes',style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0
-                    )
-                  )
                 ],
               ),
              Column(
@@ -139,11 +127,6 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                       ),
                      ),
                   ),
-                  Text('My Students',style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0
-                    )
-                  )
                 ],
               ),
             ],
@@ -167,11 +150,6 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                       ),
                      ),
                   ),
-                  Text('Admin',style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0
-                    )
-                  )
                 ],
               ),
               Column(
@@ -190,11 +168,6 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                       ),
                      ),
                   ),
-                  Text('Map',style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0
-                    )
-                  )
                 ],
               ),
             ],
@@ -206,8 +179,11 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
   }
 
   void navigateToNotes(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => NotesPage(user: user), fullscreenDialog: true));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => NoteList(), fullscreenDialog: true));
   }
+  //  void navigateToNotes(){
+  //   Navigator.push(context, MaterialPageRoute(builder: (context) => SubjectListPage(user: user.uid), fullscreenDialog: true));
+  // }
   void navigateToTimetable(){
     Navigator.push(context, MaterialPageRoute(builder: (context) => TimeTablePage(user: user), fullscreenDialog: true));
   }
@@ -215,7 +191,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
     Navigator.push(context, MaterialPageRoute(builder: (context) => AdminPage(user: user), fullscreenDialog: true));
   }
   void navigateToStudents(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => StudentsPage(user: user), fullscreenDialog: true));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => StudentsPage(user: user.uid), fullscreenDialog: true));
   }
   void navigateToMap(){
     Navigator.push(context, MaterialPageRoute(builder: (context) => MapPage(user: user), fullscreenDialog: true));

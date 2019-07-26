@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class StudentsPage extends StatefulWidget {
-  const StudentsPage({Key key, this.user}) : super(key: key);
+class StudentListPage extends StatefulWidget {
+  const StudentListPage({Key key, this.user}) : super(key: key);
   final String user;
   @override
-  _StudentsPageState createState() => _StudentsPageState();
+  _StudentListPageState createState() => _StudentListPageState();
 }
 
-class _StudentsPageState extends State<StudentsPage> {
+class _StudentListPageState extends State<StudentListPage> {
    String user;
  
   @override

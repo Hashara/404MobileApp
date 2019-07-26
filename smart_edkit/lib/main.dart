@@ -1,4 +1,4 @@
-import 'package:smart_edkit/pages/setup/welcome.dart';
+import 'package:sedkit/pages/setup/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

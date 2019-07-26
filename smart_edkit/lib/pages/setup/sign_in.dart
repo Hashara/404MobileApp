@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_edkit/pages/teacher/teacherhome.dart';
+import 'package:sedkit/pages/teacher/teacherhome.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,106 +11,112 @@ class _LoginPageState extends State<LoginPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _email, _password;
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-     // appBar: new AppBar(),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            // TextFormField(
-            //   validator: (input) {
-            //     if(input.isEmpty){
-            //       return 'Provide an email';
-            //     }
-            //   },
-            //   decoration: InputDecoration(
-            //     labelText: 'Email'
-            //   ),
-            //   onSaved: (input) => _email = input,
-            // ),
-            // TextFormField(
-            //   validator: (input) {
-            //     if(input.length < 6){
-            //       return 'Longer password please';
-            //     }
-            //   },
-              
-            //   decoration: InputDecoration(
-            //     labelText: 'Password'
-            //   ),
-            //   onSaved: (input) => _password = input,
-            //   obscureText: true,
-            // ),
-            SizedBox(height: 250.0),
-            
-             SizedBox(width: 100.0),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              autofocus: false,
-               onSaved: (input) => _email = input,
-               validator: (input) {
-                if(input.isEmpty){
-                  return 'Provide an email';
-                }
-              },
-              decoration: InputDecoration(
-                prefixIcon: Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Icon(
-                    Icons.email,
-                    color: Colors.grey,
-                  ), // icon is 48px widget.
-                ), // icon is 48px widget.
-                hintText: 'Email',
-                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-              ),
-            ),
-             SizedBox(height: 20.0),
-            TextFormField(
-              autofocus: false,
-              obscureText: true,
-               onSaved: (input) => _password = input,
-              validator: (input) {
-                  if(input.length < 6){
-                    return 'Longer password please';
-                  }
-                },
-              decoration: InputDecoration(
-                prefixIcon: Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Icon(
-                    Icons.lock,
-                    color: Colors.grey,
-                  ), // icon is 48px widget.
-                ), // icon is 48px widget.
-                hintText: 'Password',
-                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-              ),
-            ),
-             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                onPressed:signIn,
-                padding: EdgeInsets.all(12),
-                color: Theme.of(context).primaryColor,
-                child: Text('SIGN IN', style: TextStyle(color: Colors.white)),
-              ),
-            ),
-            
-          ],
-        )
-      ),
+     appBar: new AppBar(),
+      body: Center(
+        child:loginBody(),
+     
+       )
+      
+     
     );
   }
 
+  loginBody() => SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[loginHeader(), loginFields()],
+        ),
+      );
+
+  loginHeader() => Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        FlutterLogo(
+          colors: Colors.blue,
+          size: 80.0,
+        ),
+        SizedBox(
+          height: 30.0,
+        ),
+        Text(
+          "Welcome to Smart Edkit",
+          style: TextStyle(fontWeight: FontWeight.w700, color: Colors.blue),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          "Sign in to continue",
+          style: TextStyle(color: Colors.grey),
+        ),
+      ],
+    );
+  loginFields() => Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
+              child: TextFormField(
+                maxLines: 1,
+                onSaved: (input) => _email = input,
+                validator: (input) {
+                  if(input.isEmpty){
+                    return 'Provide an email';
+                  }
+                },
+                decoration: InputDecoration(
+                  hintText: "Enter your email",
+                  labelText: "Email",
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
+              child: TextFormField(
+                maxLines: 1,
+                onSaved: (input) => _password = input,
+                validator: (input) {
+                    if(input.length < 6){
+                      return 'Longer password please';
+                    }
+                },
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: "Enter your password",
+                  labelText: "Password",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
+              width: double.infinity,
+              child: RaisedButton(
+                padding: EdgeInsets.all(12.0),
+                shape: StadiumBorder(),
+                child: Text(
+                  "SIGN IN",
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.blue,
+                 onPressed:signIn,
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            
+          ],
+        ),
+      );
   void signIn() async {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
