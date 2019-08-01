@@ -62,9 +62,9 @@ class _PriorityPickerState extends State<PriorityPicker> {
                     color: selectedIndex == index
                         ? priorityColor[index]
                         : Colors.transparent,
-                    borderRadius: BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(1.0),
                     border: selectedIndex == index
-                        ? Border.all(width: 2, color: Colors.black)
+                        ? Border.all(width: 2, color: Colors.transparent)
                         : Border.all(width: 0,color: Colors.transparent)),
               ),
             ),

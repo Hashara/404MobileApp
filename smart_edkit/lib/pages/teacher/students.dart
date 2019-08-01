@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sedkit/pages/teacher/students/utils/widgets.dart';
 
 class StudentsPage extends StatefulWidget {
   const StudentsPage({Key key, this.user}) : super(key: key);
@@ -35,14 +36,18 @@ class _StudentsPageState extends State<StudentsPage> {
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
-           return Text('${snapshot.data['students']} ');
-            //  for(var i = 0;i<snapshot.data['students'].length;i++){
-            //     print("Position $i : ${snapshot.data['students'][i]} ");
-            //   }
+        
+             return getStudentsWidgets(snapshot.data['students']);
           }
           return LinearProgressIndicator();
         },
       ),
     );
+  }
+
+   Widget getStudentsWidgets(List<dynamic> strings)
+  {
+    return new SingleChildScrollView(
+      child: Column(children: strings.map((student) => new Student(studentID:student)).toList()));
   }
 }

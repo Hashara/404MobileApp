@@ -148,7 +148,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -158,7 +158,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pop();
                 moveToLastScreen();
@@ -189,7 +189,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -219,7 +219,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -229,7 +229,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pop();
                 _delete();
