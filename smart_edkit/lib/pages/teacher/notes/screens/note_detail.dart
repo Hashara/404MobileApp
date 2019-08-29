@@ -44,7 +44,7 @@ class NoteDetailState extends State<NoteDetail> {
               appBarTitle,
               //style: Theme.of(context).textTheme.headline,
             ),
-            backgroundColor: Colors.blue,
+            backgroundColor: Color(0XFF0C0C42),
             leading: IconButton(
                 icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                 onPressed: () {
@@ -148,7 +148,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Color(0XFF0C0C42))),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -158,7 +158,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Color(0XFF0C0C42))),
               onPressed: () {
                 Navigator.of(context).pop();
                 moveToLastScreen();
@@ -189,7 +189,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color:Color(0XFF0C0C42))),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -219,7 +219,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Color(0XFF0C0C42))),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -229,7 +229,7 @@ class NoteDetailState extends State<NoteDetail> {
                   style: Theme.of(context)
                       .textTheme
                       .body1
-                      .copyWith(color: Colors.purple)),
+                      .copyWith(color: Color(0XFF0C0C42))),
               onPressed: () {
                 Navigator.of(context).pop();
                 _delete();

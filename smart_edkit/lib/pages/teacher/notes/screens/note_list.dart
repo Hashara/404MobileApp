@@ -35,7 +35,7 @@ class NoteListState extends State<NoteList> {
          ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0XFF0C0C42),
         leading: noteList.length == 0
             ? Container()
             : IconButton(
@@ -95,7 +95,7 @@ class NoteListState extends State<NoteList> {
         tooltip: 'Add Note',
         shape: CircleBorder(side: BorderSide(color: Colors.white, width: 2.0)),
         child: Icon(Icons.add, color: Colors.white),
-        backgroundColor: Colors.blue,
+        backgroundColor:Color(0XFF0C0C42),
       ),
     );
   }
