@@ -10,6 +10,7 @@ class StudentListPage extends StatefulWidget {
 
 class _StudentListPageState extends State<StudentListPage> {
    String user;
+   int count=0;
  
   @override
   void initState() {
