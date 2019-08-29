@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sedkit/pages/teacher/calender/clean_calander.dart';
 
 class AttendancePage extends StatefulWidget {
-  const AttendancePage({Key key, this.user}) : super(key: key);
-  final FirebaseUser user;
+  const AttendancePage({Key key, this.userid,this.schoolid,this.uid}) : super(key: key);
+  final String userid;
+  final String schoolid;
+  final String uid;
   @override
   _AttendancePageState createState() => _AttendancePageState();
 }
 
 class _AttendancePageState extends State<AttendancePage> {
+  
   @override
   Widget build(BuildContext context) {
    return new Scaffold(
