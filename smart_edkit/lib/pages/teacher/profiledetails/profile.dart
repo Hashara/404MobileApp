@@ -67,6 +67,6 @@ class _ProfileTeacherPageState extends State<ProfileTeacherPage> {
 
    Widget getProfilePage()
   {
-    return new ProfileUipage(address:address,birthday:birthday,contactnumber:contactnumber,gClass:gClass,gender:gender,name:name,nic:nic);
+    return new ProfileUipage(userid:userid,schoolid:schoolid,address:address,birthday:birthday,contactnumber:contactnumber,gClass:gClass,gender:gender,name:name,nic:nic);
   }
 }
