@@ -8,6 +8,7 @@ import 'package:sedkit/pages/teacher/timetable.dart';
 import 'package:sedkit/pages/teacher/notes/screens/note_list.dart';
 import 'package:sedkit/pages/teacher/profiledetails/profile.dart';
 import 'package:sedkit/pages/teacher/students/databaseConnections/class.dart';
+import 'package:sedkit/pages/setup/toBeImplemented.dart';
 
 
 class TeacherHomePage extends StatefulWidget {
@@ -53,7 +54,9 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
     double height = MediaQuery.of(context).size.height;
 
     Color gradientStart = Color(0XFFA2A2A6); 
-    Color gradientEnd =  Color(0XFF0C0C42); 
+    // Color gradientEnd =  Color(0XFF0C0C42); 
+    Color gradientEnd =  Color(0XFFFFFFFF); 
+
     return  new Scaffold(
       appBar: AppBar(
         title: Text('Home'),
@@ -121,7 +124,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                     height: (width/20)*6.5,
                     width: (width/20)*6.5,
                      child: new FlatButton(
-                      color: Color(0xFF46C25D),
+                      color: Color(0xFF174275),
                       splashColor: Colors.transparent,  
                       highlightColor: Colors.transparent,
                       onPressed: navigateToAttendance,
@@ -143,7 +146,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                     width: (width/20)*6.5,
                      child: new FlatButton(
                       onPressed: navigateToTimetable,
-                      color: Color(0xFFB83DBA),
+                      color: Color(0xFF23599F),
                        splashColor: Colors.transparent,  
                        highlightColor: Colors.transparent,
                       child: new ConstrainedBox(
@@ -162,7 +165,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                     height:(width/20)*6.5,
                     width: (width/20)*6.5,
                      child: new FlatButton(
-                       color: Color(0xFFFFCA18),
+                       color: Color(0xFF174275),
                        splashColor: Colors.transparent,  
                       highlightColor: Colors.transparent,
                       onPressed: navigateToNotes,
@@ -191,7 +194,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                      child: new FlatButton(
 
                       onPressed: navigateToStudents,
-                      color: Color(0xFF01828E),
+                      color: Color(0xFF23599F),
                       splashColor: Colors.transparent,  
                       highlightColor: Colors.transparent,
                     
@@ -210,7 +213,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                     height: (width/20)*6.5,
                     width: (width/20)*6.5,
                      child: new FlatButton(
-                      color: Color(0xFF3F48CC),
+                      color: Color(0xFF174275),
                       onPressed: navigateToAdmin,
                       splashColor: Colors.transparent,  
                       highlightColor: Colors.transparent,
@@ -230,7 +233,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                     height: (width/20)*6.5,
                     width: (width/20)*6.5,
                      child: new FlatButton(
-                      color: Color(0xFFEC1C24),
+                      color: Color(0xFF23599F),
                       onPressed:navigateToMap,
                       splashColor: Colors.transparent,  
                       highlightColor: Colors.transparent,
@@ -264,8 +267,10 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
   // }
   void navigateToTimetable(){
     // Navigator.push(context, MaterialPageRoute(builder: (context) => TimeTablePage(user: userid), fullscreenDialog: true));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => TobeImplemented(), fullscreenDialog: true));
   }
   void navigateToAdmin(){
+     Navigator.push(context, MaterialPageRoute(builder: (context) => TobeImplemented(), fullscreenDialog: true));
     //Navigator.push(context, MaterialPageRoute(builder: (context) => AdminPage(user: userid), fullscreenDialog: true));
   }
   void navigateToStudents(){
@@ -274,6 +279,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
 
   }
   void navigateToMap(){
+     Navigator.push(context, MaterialPageRoute(builder: (context) => TobeImplemented(), fullscreenDialog: true));
    // Navigator.push(context, MaterialPageRoute(builder: (context) => MapPage(user: userid), fullscreenDialog: true));
   }
   void navigateToAttendance(){
@@ -281,7 +287,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
   }
 
   void navigateToProfile(){
-    print(uid);
+    //print(uid);
     Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTeacherPage(userid: userid,schoolid: schoolid,), fullscreenDialog: true));
   }
 }
