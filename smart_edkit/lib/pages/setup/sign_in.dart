@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sedkit/pages/teacher/teacherhome.dart';
+import 'package:sedkit/pages/setup/getSchool.dart';
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -34,16 +35,24 @@ class _LoginPageState extends State<LoginPage> {
   loginHeader() => Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        FlutterLogo(
-          colors: Colors.blue,
-          size: 80.0,
-        ),
+        
+        Container(
+        width: 200.0,
+        height: 170.0,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/logo.png')
+              ),
+          // borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          color: Colors.transparent,
+        )),
         SizedBox(
           height: 30.0,
         ),
         Text(
           "Welcome to Smart Edkit",
-          style: TextStyle(fontWeight: FontWeight.w700, color: Colors.blue),
+          style: TextStyle(fontWeight: FontWeight.w700, color:  Color(0XFF0C0C42)),
         ),
         SizedBox(
           height: 5.0,
@@ -106,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                   "SIGN IN",
                   style: TextStyle(color: Colors.white),
                 ),
-                color: Colors.blue,
+                color: Color(0XFF0C0C42),
                  onPressed:signIn,
               ),
             ),
@@ -123,7 +132,8 @@ class _LoginPageState extends State<LoginPage> {
       try{
         FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
         //  String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherHomePage(user: user)));
+       // Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherHomePage(user: user)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => School(userid: user.uid)));
       }catch(e){
         print(e.message);
       }
