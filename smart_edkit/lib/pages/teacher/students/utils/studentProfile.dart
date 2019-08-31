@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:sedkit/pages/setup/toBeImplemented.dart';
+
 
 class StudentProfile extends StatefulWidget {
 
-  const StudentProfile({Key key, this.schoolid,this.studentid,this.address,this.birthday,this.contactnumber,this.gender,this.name,this.parentName,this.parentOccupation,this.registrationDate,this.workplaceAddress}) : super(key: key);
+  const StudentProfile({Key key, this.schoolid,this.studentid,this.address,this.birthday,this.contactnumber,this.gClass,this.gender,this.name,this.parentName,this.parentOccupation,this.registrationDate,this.workplaceAddress}) : super(key: key);
   final String schoolid;
   final String studentid;
   final String address;
@@ -16,6 +18,7 @@ class StudentProfile extends StatefulWidget {
   final String parentOccupation;
   final DateTime registrationDate;
   final String workplaceAddress;
+  final String gClass;
   @override
   _StudentProfileState createState() => _StudentProfileState();
 }
@@ -34,9 +37,12 @@ class _StudentProfileState extends State<StudentProfile> {
   DateTime registrationDate;
   String workplaceAddress;
   String _imageUrl;
+  String gClass;
 
-  Color gradientStart = Color(0XFFA2A2A6); //Change start gradient color here
-  Color gradientEnd =  Color(0XFF0C0C42); 
+ Color gradientStart = Color(0XFFA2A2A6); 
+    // Color gradientEnd =  Color(0XFF0C0C42); 
+    Color gradientEnd =  Color(0XFFFFFFFF); 
+
   @override
   void initState() {
       super.initState();
@@ -51,9 +57,10 @@ class _StudentProfileState extends State<StudentProfile> {
       parentOccupation=widget.parentOccupation;
       registrationDate=widget.registrationDate;
       workplaceAddress=widget.workplaceAddress;
+      gClass=widget.gClass;
       print(registrationDate);
 
-      var ref = FirebaseStorage.instance.ref().child('school/$schoolid/student/$studentid.png');
+      var ref = FirebaseStorage.instance.ref().child('school/$schoolid/student/$studentid.jpg');
       ref.getDownloadURL().then((loc) => setState(() => _imageUrl = loc));
 
   }
@@ -89,16 +96,16 @@ class _StudentProfileState extends State<StudentProfile> {
                 Column(
                   children: <Widget>[
                      FlatButton(
-                      onPressed: ()=>{},
+                      onPressed: navigateTo,
                       child:Container(
                         child: Column(
                           children: <Widget>[
                             Icon(
                               Icons.grade,
-                              color: Colors.yellow,
+                              color: Theme.of(context).primaryColor,
                             ) ,
                             Text('Grades',
-                            style: TextStyle(color: Colors.white
+                            style: TextStyle(color: Theme.of(context).primaryColor
                             ))
                           ],
                         ),
@@ -114,16 +121,16 @@ class _StudentProfileState extends State<StudentProfile> {
                Column(
                   children: <Widget>[
                      FlatButton(
-                      onPressed: ()=>{},
+                      onPressed: navigateTo,
                       child:Container(
                         child: Column(
                           children: <Widget>[
                             Icon(
                               Icons.calendar_today,
-                              color: Colors.yellow,
+                              color: Theme.of(context).primaryColor,
                             ) ,
                             Text('Attendance',
-                            style: TextStyle(color: Colors.white
+                            style: TextStyle(color: Theme.of(context).primaryColor
                             ))
                           ],
                         ),
@@ -141,17 +148,17 @@ class _StudentProfileState extends State<StudentProfile> {
                 child: new Container(
                     margin: const EdgeInsets.only(left: 10.0, right: 20.0),
                     child: Divider(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       height: 36,
                     )),
               ),
               Text('Student Details',
-              style: TextStyle(fontSize: 18.0,color: Colors.white)),
+              style: TextStyle(fontSize: 18.0,color: Theme.of(context).primaryColor)),
               Expanded(
                 child: new Container(
                     margin: const EdgeInsets.only(left: 20.0, right: 10.0),
                     child: Divider(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       height: 36,
                     )),
               ),
@@ -159,49 +166,49 @@ class _StudentProfileState extends State<StudentProfile> {
           Container(
             
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top: 20.0),
+            margin: new EdgeInsets.only( left: 20.0,top: 20.0),
             child:Text('Name : $name',
-              style: TextStyle(fontSize: 16.0,color: Colors.white)
+              style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)
             ), 
           ),
           
           Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child:Text('Admission number : $studentid',
-            style: TextStyle(fontSize: 16.0,color: Colors.white)
+            style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)
              // style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)
               ),
           ),
            Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
-            child:Text('class : 1 A',
-              style: TextStyle(fontSize: 16.0,color: Colors.white)),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
+            child:Text('class :$gClass',
+              style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)),
           ),
           Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child: Text('gender : $gender',
-              style: TextStyle(fontSize: 16.0,color: Colors.white)),
+              style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)),
           ),
           Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child:Text('birthday : ${birthday.year.toString()}/${birthday.month.toString()}/${birthday.day.toString()}',
-              style: TextStyle(fontSize: 16.0,color: Colors.white)),
+              style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)),
           ),
            Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child:Text('registration date : ${registrationDate.year.toString()}/${registrationDate.month.toString()}/${registrationDate.day.toString()}',
-              style: TextStyle(fontSize: 16.0,color: Colors.white)),
+              style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)),
           ),
           Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child:Text('Home address : $address',
-            style: TextStyle(fontSize: 16.0,color: Colors.white)
+            style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)
              // style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)
               ),
           ),
@@ -209,9 +216,9 @@ class _StudentProfileState extends State<StudentProfile> {
            Container(
             alignment: Alignment.centerLeft,
              width: width*8/10,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child: Text('Emegency contact number : $contactnumber',
-              style: TextStyle(fontSize: 16.0,color: Colors.white)),
+              style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)),
           ),
           Container(
             width: width/10,
@@ -233,34 +240,34 @@ class _StudentProfileState extends State<StudentProfile> {
                 child: new Container(
                     margin: const EdgeInsets.only(left: 10.0, right: 20.0),
                     child: Divider(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       height: 36,
                     )),
               ),
               Text('Parent Details',
-              style: TextStyle(fontSize: 18.0,color: Colors.white)),
+              style: TextStyle(fontSize: 18.0,color: Theme.of(context).primaryColor)),
               Expanded(
                 child: new Container(
                     margin: const EdgeInsets.only(left: 20.0, right: 10.0),
                     child: Divider(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       height: 36,
                     )),
               ),
             ]),
            Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child:Text('Parent name : $parentName',
-            style: TextStyle(fontSize: 16.0,color: Colors.white)
+            style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)
              // style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)
               ),
           ),
           Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child:Text('Occupation : $parentOccupation',
-            style: TextStyle(fontSize: 16.0,color: Colors.white)
+            style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)
              // style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)
               ),
           ),
@@ -268,10 +275,10 @@ class _StudentProfileState extends State<StudentProfile> {
          Row(children: <Widget>[
            Container(
             alignment: Alignment.centerLeft,
-             width: width*8/10,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+             width: width*8/20,
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child: Text('parent\'s number : $contactnumber',
-              style: TextStyle(fontSize: 16.0,color: Colors.white)),
+              style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)),
           ),
           Container(
             width: width/10,
@@ -289,9 +296,9 @@ class _StudentProfileState extends State<StudentProfile> {
          ],),
           Container(
             alignment: Alignment.centerLeft,
-            margin: new EdgeInsets.only( left: 10.0,top:5),
+            margin: new EdgeInsets.only( left: 20.0,top:5),
             child:Text('Work place address : $workplaceAddress',
-            style: TextStyle(fontSize: 16.0,color: Colors.white)
+            style: TextStyle(fontSize: 16.0,color: Theme.of(context).primaryColor)
              // style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)
               ),
           ),
@@ -314,5 +321,9 @@ class _StudentProfileState extends State<StudentProfile> {
     }   
   }
 
+  void navigateTo(){
+     Navigator.push(context, MaterialPageRoute(builder: (context) => TobeImplemented(), fullscreenDialog: true));
+   // Navigator.push(context, MaterialPageRoute(builder: (context) => MapPage(user: userid), fullscreenDialog: true));
+  }
   
 }

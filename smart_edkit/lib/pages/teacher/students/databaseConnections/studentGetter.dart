@@ -60,9 +60,12 @@ class _StudentGetterState extends State<StudentGetter> {
   //    for (int i = 0; i < 5; i++) {
   //   print(strings[i]);
   // }
+    //print(strings.length);
+    print(gClass);
     
-    Color gradientStart = Color(0XFFA2A2A6); //Change start gradient color here
-    Color gradientEnd =  Color(0XFF0C0C42); 
+    Color gradientStart = Color(0XFFA2A2A6); 
+    // Color gradientEnd =  Color(0XFF0C0C42); 
+    Color gradientEnd =  Color(0XFFFFFFFF); 
 
     return new Container(
           decoration: new BoxDecoration(
@@ -74,6 +77,17 @@ class _StudentGetterState extends State<StudentGetter> {
             ),
           ),
           child:  SingleChildScrollView(
-      child: Column(children: strings.map((student) => new StudentDetailsGetter(studentid:student,schoolid: schoolid,)).toList())));
+      child:Column(
+        children: <Widget>[
+          Card(
+            child:Text('Number of Students in your class : ${strings.length}',
+          style: TextStyle(color: Colors.white)) ,
+          color: Colors.transparent,
+          ),
+          Column(children: strings.map((student) => new StudentDetailsGetter(studentid:student,schoolid: schoolid,gClass: gClass,)).toList())
+        ],
+      )
+    )
+    );
   }
 }

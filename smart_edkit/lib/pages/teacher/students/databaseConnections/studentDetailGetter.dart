@@ -3,10 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sedkit/pages/teacher/students/utils/studentProfile.dart';
 
 class StudentDetailsGetter extends StatefulWidget {
-  const StudentDetailsGetter({Key key, this.schoolid,this.studentid}) : super(key: key);
+  const StudentDetailsGetter({Key key, this.schoolid,this.studentid,this.gClass}) : super(key: key);
   
   final String schoolid;
   final String studentid;
+  final String gClass;
 
   @override
   _StudentDetailsGetterState createState() => _StudentDetailsGetterState();
@@ -24,7 +25,7 @@ class _StudentDetailsGetterState extends State<StudentDetailsGetter> {
   String parentName;
   String parentOccupation;
   DateTime registrationDate;
-  //String uid;
+  String gClass;
   String workplaceAddress;
 
   @override
@@ -32,6 +33,7 @@ class _StudentDetailsGetterState extends State<StudentDetailsGetter> {
       super.initState();
       schoolid = widget.schoolid;
       studentid=widget.studentid;
+      gClass=widget.gClass;
       //print(schoolid);
   }
 
@@ -81,7 +83,7 @@ class _StudentDetailsGetterState extends State<StudentDetailsGetter> {
                             width: width*8/10,
                             child: Text(
                               (snapshot.data['name']),
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Theme.of(context).primaryColor),
                             ),
                         //   ],
                         ),
@@ -124,6 +126,7 @@ class _StudentDetailsGetterState extends State<StudentDetailsGetter> {
       workplaceAddress: workplaceAddress,
       studentid: studentid,
       schoolid: schoolid,
+      gClass:gClass,
     ), fullscreenDialog: true));
   }
 }
